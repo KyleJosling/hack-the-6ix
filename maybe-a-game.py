@@ -1,3 +1,6 @@
+# if getattr(sys, 'frozen', False):
+#     os.chdir(sys._MEIPASS)
+
 import pygame
 from pygame.locals import *
 import math
@@ -9,8 +12,8 @@ import cv2
 
 ########################
 #In the first part of the code we train the face cascade with the xml file.
-face_cascade= cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-eye_cascade= cv2.CascadeClassifier('haarcascade_eye.xml')
+face_cascade= cv2.CascadeClassifier('data/haarcascade_frontalface_default.xml')
+eye_cascade= cv2.CascadeClassifier('data/haarcascade_eye.xml')
 
 #Start capturing video
 cap=cv2.VideoCapture(0)
@@ -39,7 +42,7 @@ ds = pygame.display.set_mode((w,h))
 black = (0,0,0)
 white = (255,255,255)
 
-bg = pygame.image.load("grass.png").convert()
+bg = pygame.image.load("data/grass.png").convert()
 
 def text_objects(text, font):
     textSurface = font.render(text, True, black)
@@ -71,11 +74,11 @@ class Sprite:
         self.width = width
         self.height = height
         if x == 111 and y == 111:
-            self.image = pygame.image.load("mrpoopybutthole.png")
+            self.image = pygame.image.load("data/mrpoopybutthole.png")
             self.x = 350
             self.y = 350
         else:
-            self.image = pygame.image.load("pineapple.png")
+            self.image = pygame.image.load("data/pineapple.png")
     def render(self,collision):
         if (collision == True): # make them red when there's a collision
             message_display("game ova!!!")
